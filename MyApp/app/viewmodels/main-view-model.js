@@ -14,6 +14,7 @@ var globalTasks = [
 function todayPageViewModel() {
     const vModel = new Observable();
     const tasks = new ObservableArray(globalTasks);
+    vModel.addButtonPos = [250,500];
     vModel.set("tasks", tasks);
 
     vModel.goToAddTaskPage = function(args) {

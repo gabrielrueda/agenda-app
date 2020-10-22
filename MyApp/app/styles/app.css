@@ -34,11 +34,19 @@ TextField.-primary {
 }
 
 .checkBox {
-    background-color: red;
+    background-color: green;
     font-size: 25;
     width: 200px;
     height: 200px;
     margin: 0;
+}
+
+.addButton {
+    background-color: green;
+    font-size: 35;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
 }
 
 .mainLabel {

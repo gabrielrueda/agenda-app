@@ -21,7 +21,7 @@
             <Label text="Date:" class="mainLabel"/>
             <DatePicker id="date" class="datePicker" date="{{ date }}" minDate="{{ minDate }}" maxDate="{{ maxDate }}"></DatePicker>
 
-            <Button tap="{{ addTask }}" text="Add Task"/>
+            <Button tap="{{ addTask }}" class="typeSelectorButton" text="Add Task"/>
         </StackLayout>
     </ScrollView>
 </Page>
