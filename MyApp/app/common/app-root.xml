@@ -1,0 +1,39 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd">
+    <!-- <Frame id="addTaskPage" defaultPage="pages/addTask-page" />
+     -->
+    <BottomNavigation selectedIndex="0">
+    <TabStrip>
+        <TabStripItem>
+            <Label text="Today"></Label>
+            <Image src="font://&#xf015;" class="fas"></Image>
+        </TabStripItem>
+
+        <TabStripItem>
+            <Label text="Calendar"></Label>
+            <Image src="font://&#xf007;" class="fas"></Image>
+        </TabStripItem>
+
+        <TabStripItem>
+            <Label text="Settings"></Label>
+            <Image src="font://&#xf00e;" class="fas"></Image>
+        </TabStripItem>
+    </TabStrip>
+
+    <!-- The number of TabContentItem components should corespond to the number of TabStripItem components -->
+    <TabContentItem>
+        <Frame id="mainPage" defaultPage="pages/today-page" />
+    </TabContentItem>
+    <TabContentItem>
+        <GridLayout>
+            <Label text="Account Page" class="h2 text-center"></Label>
+        </GridLayout>
+    </TabContentItem>
+    <TabContentItem>
+        <GridLayout>
+            <Label text="Search Page" class="h2 text-center"></Label>
+        </GridLayout>
+    </TabContentItem>
+
+</BottomNavigation>
+
+</Page>

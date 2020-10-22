@@ -1,0 +1,27 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Add Task" icon="" />
+    <ScrollView height="1000">
+        <StackLayout class="p-20">
+        <!-- <Label text="Add Task" class="title"/> -->
+            <Label text="Task:" class="mainLabel"/>
+            <TextField text="{{ name }}" class="-primary" id="task" hint="e.g. Clean Shoes"></TextField>
+
+            <Label text="Class:" class="mainLabel"/>
+            <TextField text="{{ class }}" class="-primary" id="class" hint="e.g. Mathematics"></TextField>
+
+            <Label text="Type:" class="mainLabel" />
+            <GridLayout columns="*, *, *" rows="auto,auto">
+                <Button tap="{{ selectType }}" class="typeSelectorButton" col="0" row="0" text="Homework"/>
+                <Button tap="{{ selectType }}" class="typeSelectorButton" col="1" row="0" text="Assignment"/>
+                <Button tap="{{ selectType }}" class="typeSelectorButton" col="2" row="0" text="Test"/>
+                <Button tap="{{ selectType }}" class="typeSelectorButton" col="0" row="1" text="Quiz"/>
+                <Button tap="{{ selectType }}" class="typeSelectorButton" col="1" row="1" text="Reminder"/>
+                <Button tap="{{ selectType }}" class="typeSelectorButton" col="2" row="1" text="Other"/>
+            </GridLayout>
+            <Label text="Date:" class="mainLabel"/>
+            <DatePicker id="date" class="datePicker" date="{{ date }}" minDate="{{ minDate }}" maxDate="{{ maxDate }}"></DatePicker>
+
+            <Button tap="{{ addTask }}" text="Add Task"/>
+        </StackLayout>
+    </ScrollView>
+</Page>
