@@ -9,7 +9,7 @@
         </TabStripItem>
 
         <TabStripItem>
-            <Label text="Calendar"></Label>
+            <Label text="Upcoming"></Label>
             <Image src="font://&#xf007;" class="fas"></Image>
         </TabStripItem>
 
@@ -24,9 +24,7 @@
         <Frame id="mainPage" defaultPage="pages/today-page" />
     </TabContentItem>
     <TabContentItem>
-        <GridLayout>
-            <Label text="Account Page" class="h2 text-center"></Label>
-        </GridLayout>
+        <Frame id="futurePage" defaultPage="pages/future-page" />
     </TabContentItem>
     <TabContentItem>
         <GridLayout>

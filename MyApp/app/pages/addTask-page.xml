@@ -18,7 +18,7 @@
                 <Button tap="{{ selectType }}" class="typeSelectorButton" col="1" row="1" text="Reminder"/>
                 <Button tap="{{ selectType }}" class="typeSelectorButton" col="2" row="1" text="Other"/>
             </GridLayout>
-            <Label text="Date:" class="mainLabel"/>
+            <Label text="{{ dateLabel + ':'}}" class="mainLabel"/>
             <DatePicker id="date" class="datePicker" date="{{ date }}" minDate="{{ minDate }}" maxDate="{{ maxDate }}"></DatePicker>
 
             <Button tap="{{ addTask }}" class="typeSelectorButton" text="Add Task"/>

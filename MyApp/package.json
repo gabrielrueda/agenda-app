@@ -24,7 +24,8 @@
   "dependencies": {
     "@nativescript/core": "~7.0.0",
     "@nativescript/theme": "~2.3.0",
-    "nativescript-modal-datetimepicker": "^1.2.4"
+    "nativescript-modal-datetimepicker": "^1.2.4",
+    "nativescript-ui-calendar": "^7.0.2"
   },
   "devDependencies": {
     "@nativescript/android": "7.0.0",

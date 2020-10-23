@@ -20,6 +20,12 @@ This is where the vast majority of your CSS code goes. */
 The following CSS rule changes the font size of all Buttons that have the
 "-primary" class modifier.
 */
+.ns-root {
+    --main-colour: #1b570c;
+    --border-radius: 5;
+    --border-width: 0.7;
+}
+
 Button.-primary {
     font-size: 18;
 
@@ -27,14 +33,15 @@ Button.-primary {
 
 TextField.-primary {
     font-size: 18;
-    background-color: green;
-    border-width: 1.5;
+    background-color: var(--main-colour);
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
     border-color: black;
     padding-left: 5;
 }
 
 .checkBox {
-    background-color: green;
+    background-color: var(--main-colour);
     font-size: 25;
     width: 200px;
     height: 200px;
@@ -42,7 +49,7 @@ TextField.-primary {
 }
 
 .addButton {
-    background-color: green;
+    background-color: var(--main-colour);
     font-size: 35;
     width: 200px;
     height: 200px;
@@ -55,7 +62,7 @@ TextField.-primary {
 .title {
     font-size: 30;
     text-align: center;
-    background-color: green;
+    background-color: var(--main-colour);
 }
 
 .secLabel {
@@ -63,30 +70,30 @@ TextField.-primary {
     padding: 0;
 }
 
-ListView {
-    border-width: 1;
-    border-color: black;
-}
 
 .datePicker {
-    background-color: green;
+    background-color: var(--main-colour);
     border-color: black;
-    border-width: 2;
-    border-radius: 10;
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
     color: whitesmoke;
     vertical-align: middle;
+    margin-left: 15;
+    margin-right: 15;
 }
 
 .typeSelectorButton {
     font-size: 12;
     background-color: gainsboro;
-    border-width: 0.7;
+    border-width: var(--border-width);
     border-color: black;
+    border-radius: var(--border-radius);
 }
 
 .typeSelectorButtonPressed {
     font-size: 12;
-    background-color: green;
-    border-width: 0.7;
+    background-color: var(--main-colour);
+    border-width: var(--border-width);
     border-color: black;
+    border-radius: var(--border-radius);
 }
