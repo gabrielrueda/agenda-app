@@ -7,10 +7,10 @@ var dialogs = require("tns-core-modules/ui/dialogs");
 
 // Variables for All View Models:
 var globalTasks = [
-    {name: "Sample0", class: "Math", day: 24, month: 1, type: "Homework"},
-    {name: "Sample1", class: "Math", day: 23, month: 1, type: "Homework"},
-    {name: "Sample2", class: "Math", day: 24, month: 1, type: "Homework"},
-    {name: "Sample3", class: "Math", day: 23, month: 1, type: "Homework"}
+    {name: "Sample0", class: "Math", day: 22, month: 1, year: 2020, type: "Homework"},
+    {name: "Sample1", class: "Mth", day: 7, month: 1, year: 2020, type: "Homework"},
+    {name: "Sample2", class: "Math", day: 16, month: 1, year: 2020, type: "Homework"},
+    {name: "Sample3", class: "Math", day: 12, month: 1, year:2020, type: "Homework"}
 ];
 
 //View Model for Today Page
@@ -69,7 +69,7 @@ function addTaskViewModel(){
         // Use getFullYear() to get the year, getMonth() for month, and getDate() for day of the month
         if(viewModel.name != "" && viewModel.class != "" && type != ""){
             globalTasks.push(
-                {name: viewModel.name, class: viewModel.class, day: viewModel.date.getDate(), month: viewModel.date.getMonth(), type: type}
+                {name: viewModel.name, class: viewModel.class, day: viewModel.date.getDate(), month: viewModel.date.getMonth(), year: viewModel.date.getFullYear(), type: type}
             );             
             myFrame = args.object.page.frame;
             myFrame.navigate("/pages/today-page");
@@ -89,10 +89,25 @@ function buttonRefresh(parent){
         parent.getChildAt(i).class = "typeSelectorButton";
     }
 }
+function sortTasks(array){
+    swapped = true;
+    while(swapped === true){
+        swapped = false;
+        for(i=1;i<array.length;i++){
+            if(array[i-1].day > array[i].day){
+                temp = array[i];
+                array[i] = array[i-1];
+                array[i-1] = temp;
+                swapped = true;
+            }
+    }
+    }
+    return array;
+}
 
 function futurePageViewModel(){
     const vModel = new Observable();
-    const tasks = new ObservableArray(globalTasks);
+    const tasks = new ObservableArray(sortTasks(globalTasks.filter(task => task.day != (new Date().getDate()))));
     vModel.set("tasks", tasks);
 
     vModel.removeTask = function(args){
@@ -106,6 +121,20 @@ function futurePageViewModel(){
             }
         }
     }
+    // vModel.sortTasks = function(args){
+    //     swapped = true;
+    //     while(swapped === true){
+    //         swapped = false;
+    //         for(i=1;i<tasks._array.length;i++){
+    //             if(tasks._array[i-1].day > tasks._array[i].day){
+    //                 temp = tasks._array[i];
+    //                 tasks._array[i] = tasks._array[i-1];
+    //                 tasks._array[i-1] = temp;
+    //                 swapped = true;
+    //             }
+    //     }
+    // }
+    // }
 
     return vModel;
 }
