@@ -1,4 +1,4 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="onNavigatingTo">
     <ActionBar title="Upcoming Tasks" icon="" />
     <StackLayout class="p-20">
         <Label text="Tommorow:" class="mainLabel"/>
@@ -9,7 +9,7 @@
                     <Button tap="{{ $parents['ListView'].removeTask }}" col="0" row="0" rowSpan="3" text="✓" class="checkBox"/>
                     <Label col="1" row="0" text="{{ name }}" class="mainLabel" textWrap="true"/>
                     <Label col="1" row="1" text="{{ 'Class: ' + class }}" class="secLabel"/>
-                    <Label col="1" row="2" text="{{ 'Date: ' + day + '/' + month + '/' + year }}" class="secLabel"/>
+                    <Label col="1" row="2" text="{{ 'Date: ' + date }}" textWrap="true" class="secLabel"/>
                      <Label col="1" row="3" text="{{ 'Type: ' + type }}" class="secLabel"/>
                 </GridLayout>
             </ListView.itemTemplate>

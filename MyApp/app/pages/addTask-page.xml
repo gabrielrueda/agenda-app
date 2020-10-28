@@ -3,7 +3,7 @@
     <ScrollView height="1000">
         <StackLayout class="p-20">
         <!-- <Label text="Add Task" class="title"/> -->
-            <Label text="Task:" class="mainLabel"/>
+            <Label text="Task: " class="mainLabel"/>
             <TextField text="{{ name }}" class="-primary" id="task" hint="e.g. Clean Shoes"></TextField>
 
             <Label text="Class:" class="mainLabel"/>
