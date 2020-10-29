@@ -3,36 +3,43 @@ const Observable = require("@nativescript/core").Observable;
 const platformModule = require("tns-core-modules/platform");
 const height = platformModule.screen.mainScreen.heightDIPs;
 const width = platformModule.screen.mainScreen.widthDIPs;
+const todaysDate = new Date();
 var dialogs = require("tns-core-modules/ui/dialogs");
 
 // Variables for All View Models:
 var globalTasks = [
-    {name: "Sample0", class: "Math", date: new Date(1917, 1, 2), type: "Homework"},
-    {name: "Sample1", class: "Mth", date: new Date(2019, 12, 2), type: "Homework"},
-    {name: "Sample2", class: "Math", date: new Date(2020, 9, 17), type: "Homework"},
-    {name: "Sample3", class: "Math", date: new Date(2020, 4, 17), type: "Homework"}
+    {name: "Sample0", class: "Stay", date: new Date(1917, 1, 2), type: "Homework"},
+    {name: "Sample1", class: "Remove", date: new Date(2019, 12, 2), type: "Homework"},
+    {name: "Sample2", class: "Remove", date: new Date(2020, 9, 17), type: "Homework"},
+    {name: "Sample3", class: "Stay", date: new Date(2020, 4, 17), type: "Homework"}
 ];
 
 //View Model for Today Page
 function todayPageViewModel() {
     const vModel = new Observable();
-    const tasks = new ObservableArray(globalTasks.filter(task => task.date.getDate() === (new Date().getDate())));
+    const tasks = new ObservableArray(globalTasks.filter(task => task.date.getDate() === (todaysDate.getDate())));
     vModel.addButtonPos = [(width-110),(height-240)];
     vModel.set("tasks", tasks);
 
     vModel.goToAddTaskPage = function(args) {
         myFrame = args.object.page.frame;
-        // globalTasks = tasks._array; --> Need to add feature so that checked tasks will update in globaltasks
         myFrame.navigate("/pages/addTask-page");
     }
 
     vModel.removeTask = function(args){
         taskParent = args.object.parent;
         taskName = taskParent.getChildAt(1).text;
-
+        //For Local Tasks Variable
         for(i=0; i<tasks.length;i++){
             if(taskName === tasks._array[i].name){
                 tasks.splice(i,1);
+                break;
+            }
+        }
+        //For Global Tasks Variable
+        for(i=0; i<globalTasks.length;i++){
+            if(taskName === globalTasks[i].name){
+                globalTasks.splice(i,1);
                 break;
             }
         }
@@ -45,10 +52,10 @@ function todayPageViewModel() {
 function addTaskViewModel(){
     const viewModel = new Observable();
     var type = "";
-    viewModel.minDate = new Date();
+    viewModel.minDate = todaysDate;
     viewModel.name = "";
     viewModel.class = "";
-    viewModel.date = new Date();
+    viewModel.date = todaysDate;
     viewModel.dateLabel = "Datee";
 
     viewModel.selectType = function(args){
@@ -69,10 +76,10 @@ function addTaskViewModel(){
         // Use getFullYear() to get the year, getMonth() for month, and getDate() for day of the month
         if(viewModel.name != "" && viewModel.class != "" && type != ""){
             globalTasks.push(
-                {name: viewModel.name, class: viewModel.class, date: viewModel.date, type: type}
+                {name: viewModel.name, class: viewModel.class, date: viewModel.date, writtenDate: getWrittenDate(viewModel.date), type: type}
             );             
             myFrame = args.object.page.frame;
-            myFrame.navigate("/pages/today-page");
+            myFrame.goBack();
         }else{
             dialogs.alert({
                 title: "Sorry",
@@ -82,6 +89,22 @@ function addTaskViewModel(){
         }
     }
     return viewModel;
+}
+function getWrittenDate(date){
+    dateToCompare = new Date();
+    options = ["Sunday","Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    for(x=0;x<7;x++){
+        dateToCompare.setDate(dateToCompare.getDate() + 1);
+        console.log(dateToCompare);
+        if(date.getDate() === dateToCompare.getDate() && date.getMonth() === dateToCompare.getMonth() && date.getFullYear() === dateToCompare.getFullYear()){
+            if(x === 0){
+                return "Tommorow";
+            }else{
+                return options[date.getDay()];
+            }
+        }
+    }
+    return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
 }
 
 function buttonRefresh(parent){
@@ -109,16 +132,29 @@ function sortTasks(array){
 
 function futurePageViewModel(){
     const vModel = new Observable();
-    const tasks = new ObservableArray(sortTasks(globalTasks.filter(task => task.date.getDate() != (new Date().getDate()))));
+    const tasks = new ObservableArray(sortTasks(globalTasks.filter(task => task.date.getDate() != (todaysDate.getDate()))));
+    vModel.addButtonPos = [(width-110),(height-240)];
     vModel.set("tasks", tasks);
+
+    vModel.goToAddTaskPage = function(args) {
+        myFrame = args.object.page.frame;
+        myFrame.navigate("/pages/addTask-page");
+    }
 
     vModel.removeTask = function(args){
         taskParent = args.object.parent;
         taskName = taskParent.getChildAt(1).text;
-
+        //For Local Tasks Variable
         for(i=0; i<tasks.length;i++){
             if(taskName === tasks._array[i].name){
                 tasks.splice(i,1);
+                break;
+            }
+        }
+        //For Global Tasks Variable
+        for(i=0; i<globalTasks.length;i++){
+            if(taskName === globalTasks[i].name){
+                globalTasks.splice(i,1);
                 break;
             }
         }
