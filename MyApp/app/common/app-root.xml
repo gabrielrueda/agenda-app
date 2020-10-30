@@ -5,17 +5,17 @@
     <TabStrip>
         <TabStripItem>
             <Label text="Today"></Label>
-            <Image src="font://&#xf015;" class="fas"></Image>
+            <Image src="~/images/icons/clipboard.png"></Image>
         </TabStripItem>
 
         <TabStripItem>
             <Label text="Upcoming"></Label>
-            <Image src="font://&#xf007;" class="fas"></Image>
+            <Image src="~/images/icons/alarm.png"></Image>
         </TabStripItem>
 
         <TabStripItem>
             <Label text="Settings"></Label>
-            <Image src="font://&#xf00e;" class="fas"></Image>
+            <Image src="~/images/icons/cog.png"></Image>
         </TabStripItem>
     </TabStrip>
 

@@ -6,7 +6,9 @@
          <ListView width="100%" height="100%" items="{{ tasks }}">
             <ListView.itemTemplate>
                 <GridLayout columns="auto, *" rows="auto, auto, auto, auto">
-                    <Button tap="{{ $parents['ListView'].removeTask }}" col="0" row="0" rowSpan="3" text="✓" class="checkBox"/>
+                    <!-- <Button tap="{{ $parents['ListView'].removeTask }}" col="0" row="0" rowSpan="3" class="checkBox"> -->
+                        <image tap="{{ $parents['ListView'].removeTask }}" col="0" row="0" rowSpan="3" class="checkBox" src="~/images/icons/checkmark.png" />
+                    <!-- </Button> -->
                     <Label col="1" row="0" text="{{ name }}" class="mainLabel" textWrap="true"/>
                     <Label col="1" row="1" text="{{ 'Class: ' + class }}" class="secLabel"/>
                     <Label col="1" row="2" text="{{ 'Date: ' + writtenDate }}" textWrap="true" class="secLabel"/>

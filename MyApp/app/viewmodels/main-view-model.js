@@ -17,7 +17,7 @@ var globalTasks = [
 //View Model for Today Page
 function todayPageViewModel() {
     const vModel = new Observable();
-    const tasks = new ObservableArray(globalTasks.filter(task => task.date.getDate() === (todaysDate.getDate())));
+    const tasks = new ObservableArray(globalTasks.filter(task => task.date.getDate() === (todaysDate.getDate()) || (task.type === "Quiz" || task.type === "Assignment" || task.type === "Test") && task.date.getDate() === (todaysDate.getDate()+1)));
     vModel.addButtonPos = [(width-110),(height-240)];
     vModel.set("tasks", tasks);
 
@@ -56,20 +56,20 @@ function addTaskViewModel(){
     viewModel.name = "";
     viewModel.class = "";
     viewModel.date = todaysDate;
-    viewModel.dateLabel = "Datee";
+    viewModel.dateLabel = "Date";
 
     viewModel.selectType = function(args){
         button = args.object;
         buttonRefresh(button.parent);
         button.class = "typeSelectorButtonPressed";
         type = button.text;
+        console.log(type);
         if(type === "Test" || type === "Quiz"){
-            viewModel.dateLabel = type + " Date";
-            console.log("Test or quiz")
+            viewModel.set("dateLabel",type + " Date");
         }else if(type === "Assignment" || type === "Homework"){
-            viewModel.dateLabel = "Due Date";
+            viewModel.set("dateLabel","Due Date");
         }else{
-            viewModel.dateLabel = "Date";
+            viewModel.set("dateLabel","Date");
         }
     }
     viewModel.addTask = function(args){
@@ -94,15 +94,16 @@ function getWrittenDate(date){
     dateToCompare = new Date();
     options = ["Sunday","Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     for(x=0;x<7;x++){
-        dateToCompare.setDate(dateToCompare.getDate() + 1);
-        console.log(dateToCompare);
         if(date.getDate() === dateToCompare.getDate() && date.getMonth() === dateToCompare.getMonth() && date.getFullYear() === dateToCompare.getFullYear()){
             if(x === 0){
-                return "Tommorow";
+                return "Today";
+            }else if(x === 1){
+                return "Tommorow"
             }else{
                 return options[date.getDay()];
             }
         }
+        dateToCompare.setDate(dateToCompare.getDate() + 1);
     }
     return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
 }
@@ -132,7 +133,7 @@ function sortTasks(array){
 
 function futurePageViewModel(){
     const vModel = new Observable();
-    const tasks = new ObservableArray(sortTasks(globalTasks.filter(task => task.date.getDate() != (todaysDate.getDate()))));
+    const tasks = new ObservableArray(sortTasks(globalTasks.filter(task => task.date.getDate() != (todaysDate.getDate()) && (task.type != "Quiz" || task.type != "Assignment" || task.type != "Test") && task.date.getDate() != (todaysDate.getDate()+1))));
     vModel.addButtonPos = [(width-110),(height-240)];
     vModel.set("tasks", tasks);
 
