@@ -1,0 +1,6 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"  loaded="onNavigatingTo">
+    <ActionBar title="Settings" icon="" />
+    <StackLayout class="p-20">
+        <Label text="Created by Gabriel Rueda."/>
+    </StackLayout>
+</Page>

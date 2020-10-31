@@ -42,11 +42,13 @@ TextField.-primary {
 
 .checkBox {
     background-color: var(--main-colour);
+    border-radius: var(--border-radius);
     font-size: 25;
-    width: 200px;
-    height: 200px;
-    padding: 15;
-    margin: 15;
+    width: 180px;
+    height: 180px;
+    padding: 17;
+    margin: 10;
+    margin-top: 25;    
 }
 
 .addButton {
@@ -58,7 +60,8 @@ TextField.-primary {
 }
 
 .mainLabel {
-    font-size: 20;
+    font-size: 23;
+    padding-left: 0;
 }
 .title {
     font-size: 30;
@@ -67,7 +70,7 @@ TextField.-primary {
 }
 
 .secLabel {
-    font-size: 13;
+    font-size: 12;
     padding: 0;
 }
 

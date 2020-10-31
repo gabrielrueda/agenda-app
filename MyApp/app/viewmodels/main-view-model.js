@@ -164,6 +164,13 @@ function futurePageViewModel(){
     return vModel;
 }
 
+function settingsPageViewModel(){
+    const vModel = new Observable();
+    vModel.text = "Hello World";
+    return vModel;
+}
+
 exports.todayPageViewModel = todayPageViewModel;
+exports.settingsPageViewModel = settingsPageViewModel;
 exports.futurePageViewModel = futurePageViewModel;
 exports.addTaskViewModel = addTaskViewModel;

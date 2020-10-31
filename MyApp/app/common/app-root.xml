@@ -27,9 +27,7 @@
         <Frame id="futurePage" defaultPage="pages/future-page" />
     </TabContentItem>
     <TabContentItem>
-        <GridLayout>
-            <Label text="Search Page" class="h2 text-center"></Label>
-        </GridLayout>
+        <Frame id="settingsPage" defaultPage="pages/settings-page" />
     </TabContentItem>
 
 </BottomNavigation>
