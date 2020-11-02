@@ -4,19 +4,11 @@
         <StackLayout class="p-20">
         <!-- <Label text="Add Task" class="title"/> -->
             <Label text="Task: " class="mainLabel"/>
-            <TextField text="{{ name }}" class="-primary" id="task" hint="e.g. Clean Shoes"></TextField>
+            <TextField text="{{ name }}" class="-primary" id="task" hint="e.g. Trigonometry Test"></TextField>
 
-            <Label text="Class:" class="mainLabel"/>
+            <Label text="Class:" class="mainLabel" />
             <TextField text="{{ class }}" class="-primary" id="class" hint="e.g. Mathematics"></TextField>
 
-            <!-- <GridLayout rows="auto, auto, *" columns="auto, *">
-                <dd:DropDown items="{{ items }}" selectedIndex="{{ selectedIndex }}" 
-                    opened="dropDownOpened" closed="dropDownClosed" 
-                    selectedIndexChanged="dropDownSelectedIndexChanged"
-                    row="0" colSpan="2" />
-                <Label text="Selected Index:" row="1" col="0" fontSize="18" verticalAlignment="bottom"/>
-                <TextField text="{{ selectedIndex }}" row="1" col="1" />
-            </GridLayout> -->
 
             <Label text="Type:" class="mainLabel" />
             <GridLayout columns="*, *, *" rows="auto,auto">

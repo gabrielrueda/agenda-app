@@ -22,6 +22,7 @@ The following CSS rule changes the font size of all Buttons that have the
 */
 .ns-root {
     --main-colour: #1b570c;
+    --banner-colour: #262626;
     --border-radius: 5;
     --border-width: 0.7;
 }
@@ -74,6 +75,12 @@ TextField.-primary {
     padding: 0;
 }
 
+.credit {
+    font-size: 12;
+    padding: 20;
+    text-align: center;
+}
+
 
 .datePicker {
     background-color: var(--main-colour);
@@ -88,7 +95,7 @@ TextField.-primary {
 
 .typeSelectorButton {
     font-size: 12;
-    background-color: gainsboro;
+    background-color: var(--banner-colour);
     border-width: var(--border-width);
     border-color: black;
     border-radius: var(--border-radius);
@@ -100,4 +107,8 @@ TextField.-primary {
     border-width: var(--border-width);
     border-color: black;
     border-radius: var(--border-radius);
+}
+
+ActionBar, TabStrip {
+    background-color: var(--banner-colour);
 }

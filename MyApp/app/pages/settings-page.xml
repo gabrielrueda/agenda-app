@@ -1,6 +1,12 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd"  loaded="onNavigatingTo">
     <ActionBar title="Settings" icon="" />
     <StackLayout class="p-20">
-        <Label text="Created by Gabriel Rueda."/>
+        <Label class="mainLabel" text="Date Layout:"/>
+        <StackLayout>
+            <Button tap="{{ layoutSelect }}" class="typeSelectorButton" id="0" text="DD/MM/YYYY"/>
+            <Button tap="{{ layoutSelect }}" class="typeSelectorButton" id="1" text="MM/DD/YYYY"/>
+            <Button tap="{{ layoutSelect }}" class="typeSelectorButton" id="2" text="YYYY/DD/MM"/>
+        </StackLayout>
+        <Label class="credit" text="Created by Gabriel Rueda."/>
     </StackLayout>
 </Page>

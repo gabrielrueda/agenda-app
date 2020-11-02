@@ -1,9 +1,10 @@
 const ObservableArray = require("@nativescript/core").ObservableArray;
 const Observable = require("@nativescript/core").Observable;
 const platformModule = require("tns-core-modules/platform");
-const height = platformModule.screen.mainScreen.heightDIPs;
-const width = platformModule.screen.mainScreen.widthDIPs;
+const height = 740;
+const width = 370;
 const todaysDate = new Date();
+var layoutChoosen = "0";
 var dialogs = require("tns-core-modules/ui/dialogs");
 
 // Variables for All View Models:
@@ -53,9 +54,6 @@ function todayPageViewModel() {
 //View Model for Add Task Page
 function addTaskViewModel(){
     const viewModel = new Observable();
-    var items = new ObservableArray(["Sample1","Sample2", "Sample3"]);
-    viewModel.set("items", items);
-    viewModel.set("selectedIndex", 1);
     var type = "";
     viewModel.minDate = todaysDate;
     viewModel.name = "";
@@ -110,8 +108,15 @@ function getWrittenDate(date){
         }
         dateToCompare.setDate(dateToCompare.getDate() + 1);
     }
-    return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+    if(layoutChoosen === "0"){
+        return date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+    }else if(layoutChoosen === "1"){
+        return (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
+    }else{
+        return date.getFullYear() + "/" + date.getDate() + "/" + (date.getMonth()+1);
+    }
 }
+
 
 function buttonRefresh(parent){
     for(i=0; i<parent.getChildrenCount(); i++){
@@ -174,6 +179,16 @@ function futurePageViewModel(){
 function settingsPageViewModel(){
     const vModel = new Observable();
     vModel.text = "Hello World";
+
+    vModel.layoutSelect = function(args){
+        button = args.object;
+        buttonRefresh(button.parent);
+        button.class = "typeSelectorButtonPressed";
+        layoutChoosen = button.id;
+        for(var i=0;i<globalTasks.length;i++){
+            globalTasks[i].writtenDate = getWrittenDate(globalTasks[i].date);
+        }
+    }
     return vModel;
 }
 
