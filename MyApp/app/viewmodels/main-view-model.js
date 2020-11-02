@@ -17,7 +17,9 @@ var globalTasks = [
 //View Model for Today Page
 function todayPageViewModel() {
     const vModel = new Observable();
-    const tasks = new ObservableArray(globalTasks.filter(task => task.date.getDate() === (todaysDate.getDate()) || (task.type === "Quiz" || task.type === "Assignment" || task.type === "Test") && task.date.getDate() === (todaysDate.getDate()+1)));
+    const tasks = new ObservableArray(globalTasks.filter(task => 
+        (task.date.getDate() === todaysDate.getDate() && task.date.getMonth() === todaysDate.getMonth() && task.date.getFullYear() === todaysDate.getFullYear() ) || (task.type === "Quiz" || task.type === "Assignment" || task.type === "Test") && (task.date.getDate() === todaysDate.getDate()+1 && task.date.getMonth() === todaysDate.getMonth() && task.date.getFullYear() === todaysDate.getFullYear() ))
+    );
     vModel.addButtonPos = [(width-110),(height-240)];
     vModel.set("tasks", tasks);
 
@@ -51,6 +53,9 @@ function todayPageViewModel() {
 //View Model for Add Task Page
 function addTaskViewModel(){
     const viewModel = new Observable();
+    var items = new ObservableArray(["Sample1","Sample2", "Sample3"]);
+    viewModel.set("items", items);
+    viewModel.set("selectedIndex", 1);
     var type = "";
     viewModel.minDate = todaysDate;
     viewModel.name = "";
@@ -133,7 +138,9 @@ function sortTasks(array){
 
 function futurePageViewModel(){
     const vModel = new Observable();
-    const tasks = new ObservableArray(sortTasks(globalTasks.filter(task => task.date.getDate() != (todaysDate.getDate()) && (task.type != "Quiz" || task.type != "Assignment" || task.type != "Test") && task.date.getDate() != (todaysDate.getDate()+1))));
+    const tasks = new ObservableArray(sortTasks(globalTasks.filter(task => 
+        (task.date.getDate() != todaysDate.getDate() || task.date.getMonth() != todaysDate.getMonth() || task.date.getFullYear() != todaysDate.getFullYear() ) && (task.type != "Quiz" || task.type != "Assignment" || task.type != "Test") && (task.date.getDate() != todaysDate.getDate()+1 || task.date.getMonth() != todaysDate.getMonth() || task.date.getFullYear() != todaysDate.getFullYear() )))
+    );
     vModel.addButtonPos = [(width-110),(height-240)];
     vModel.set("tasks", tasks);
 
