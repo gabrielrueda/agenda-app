@@ -93,6 +93,7 @@ function addTaskViewModel(){
     }
     return viewModel;
 }
+
 function getWrittenDate(date){
     dateToCompare = new Date();
     options = ["Sunday","Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
