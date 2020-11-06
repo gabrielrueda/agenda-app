@@ -9,7 +9,6 @@
             <Label text="Class:" class="mainLabel" />
             <TextField text="{{ class }}" class="-primary" id="class" hint="e.g. Mathematics"></TextField>
 
-
             <Label text="Type:" class="mainLabel" />
             <GridLayout columns="*, *, *" rows="auto,auto">
                 <Button tap="{{ selectType }}" class="typeSelectorButton" col="0" row="0" text="Homework"/>
@@ -22,7 +21,8 @@
             <Label text="{{ dateLabel + ':'}}" class="mainLabel"/>
             <DatePicker id="date" class="datePicker" date="{{ date }}" minDate="{{ minDate }}" maxDate="{{ maxDate }}"></DatePicker>
 
-            <Button tap="{{ addTask }}" class="typeSelectorButton" text="Add Task"/>
+            <Button tap="{{ addTask }}" class="mainButton" text="Add Task"/>
+            <Button tap="{{ cancelTask }}" class="mainButton" text="Cancel"/>
         </StackLayout>
     </ScrollView>
 </Page>

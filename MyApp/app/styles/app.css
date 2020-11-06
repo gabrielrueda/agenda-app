@@ -27,13 +27,19 @@ The following CSS rule changes the font size of all Buttons that have the
     --border-width: 0.7;
 }
 
-Button.-primary {
+.mainButton {
     font-size: 18;
-
+    margin-top: 10;
+    font-family: 'Aleo', 'Aleo-Regular';
+    background-color: var(--banner-colour);
+    border-width: var(--border-width);
+    border-color: black;
+    border-radius: var(--border-radius);
 }
 
 TextField.-primary {
     font-size: 18;
+    font-family: 'Aleo', 'Aleo-Regular';
     background-color: var(--main-colour);
     border-width: var(--border-width);
     border-radius: var(--border-radius);
@@ -63,6 +69,7 @@ TextField.-primary {
 .mainLabel {
     font-size: 23;
     padding-left: 0;
+    font-family: 'Aleo', 'Aleo-Regular';
 }
 .title {
     font-size: 30;
@@ -73,11 +80,13 @@ TextField.-primary {
 .secLabel {
     font-size: 12;
     padding: 0;
+    font-family: 'Aleo', 'Aleo-Light';
 }
 
 .credit {
     font-size: 12;
     padding: 20;
+    font-family: 'Aleo', 'Aleo-Light';
     text-align: center;
 }
 
@@ -85,6 +94,7 @@ TextField.-primary {
 .datePicker {
     background-color: var(--main-colour);
     border-color: black;
+    font-family: 'Aleo', 'Aleo-Regular';
     border-width: var(--border-width);
     border-radius: var(--border-radius);
     color: whitesmoke;
@@ -97,6 +107,7 @@ TextField.-primary {
     font-size: 12;
     background-color: var(--banner-colour);
     border-width: var(--border-width);
+    font-family: 'Aleo', 'Aleo-Regular';
     border-color: black;
     border-radius: var(--border-radius);
 }
@@ -104,6 +115,7 @@ TextField.-primary {
 .typeSelectorButtonPressed {
     font-size: 12;
     background-color: var(--main-colour);
+    font-family: 'Aleo', 'Aleo-Regular';
     border-width: var(--border-width);
     border-color: black;
     border-radius: var(--border-radius);
@@ -111,4 +123,5 @@ TextField.-primary {
 
 ActionBar, TabStrip {
     background-color: var(--banner-colour);
+    font-family: 'Aleo', 'Aleo-Regular';
 }

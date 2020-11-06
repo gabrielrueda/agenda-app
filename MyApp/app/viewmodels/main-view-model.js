@@ -8,12 +8,7 @@ var layoutChoosen = "0";
 var dialogs = require("tns-core-modules/ui/dialogs");
 
 // Variables for All View Models:
-var globalTasks = [
-    {name: "Sample0", class: "Stay", date: new Date(1917, 1, 2), type: "Homework"},
-    {name: "Sample1", class: "Remove", date: new Date(2019, 12, 2), type: "Homework"},
-    {name: "Sample2", class: "Remove", date: new Date(2020, 9, 17), type: "Homework"},
-    {name: "Sample3", class: "Stay", date: new Date(2020, 4, 17), type: "Homework"}
-];
+var globalTasks = [];
 
 //View Model for Today Page
 function todayPageViewModel() {
@@ -90,6 +85,11 @@ function addTaskViewModel(){
                 okButtonText: "Okay"
             });
         }
+    }
+
+    viewModel.cancelTask = function(args){
+        frame = args.object.page.frame;
+        frame.goBack();
     }
     return viewModel;
 }
